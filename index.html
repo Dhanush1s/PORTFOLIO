@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            
+            <div class="logo"> Dhanush Portfolio</div>
+            <div class="nav-items">
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <a class="my-profile"><img src="https://i.ibb.co/3WBSNJQ/dhanush.jpgw" alt=""></a>
+
+            <a href=""></a>
+            <div class="hero-content">
+                <h1 class="animate-text">Hi, I'm <span class="highlight">DHANUSH KUMAR</span></h1>
+                <p class="animate-text-delay">FORNTEND DEVELOPER
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn primary">Contact Me</a>
+                    <a href="#projects" class="btn secondary">View Work</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>I'm a passionate developer dedicated to creating exceptional digital experiences. With a learning foundation in web development, I bring ideas to life through clean, efficient code and intuitive design.
+
+                        My journey in technology has equipped me with both technical knowledge and creative problem-solving skills, allowing me to tackle intermediate challenges with innovative solutions..</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML</h3>
+                    <div class="progress-bar">
+                        <div class="progress" data-percent="90"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS</h3>
+                    <div class="progress-bar">
+                        <div class="progress" data-percent="85"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <div class="progress-bar">
+                        <div class="progress" data-percent="80"></div>
+                    </div>
+                </div>
+            
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4wrH5GWxPBnwuLGHyoAiROZiLwgSXw8Nxhg&s" alt="Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>Ecommerce Product Cards</h3>
+                        <p>A visually appealing display of product cards designed with HTML, CSS, and JavaScript for e-commerce websites, featuring product images, prices, and descriptions in a responsive and easy-to-browse layout.</p>
+                        <div class="project-links">
+                            <a href="https://dhanush1s.github.io/Ecommerce-Product-Cards/" class="btn small">View Live</a>
+                            <a href="https://github.com/Dhanush1s/Ecommerce-Product-Cards" class="btn small secondary">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://imageio.forbes.com/specials-images/dam/imageserve/1092571024/960x0.jpg?height=474&width=711&fit=bounds" alt="Project 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>TO-DO-LIST</h3>
+                        <p>This To-Do List is a simple and easy-to-use web app that helps you keep track of your tasks. You can easily add new tasks, mark them as done, or delete them when you're finished. It's a handy tool for staying organized and on top of your tasks every day!</p>
+                        <div class="project-links">
+                            <a href="https://dhanush1s.github.io/TO-DO-LIST/" class="btn small">View Live</a>
+                            <a href="https://github.com/Dhanush1s/TO-DO-LIST" class="btn small secondary">Source Code</a>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-content">
+                <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="0bf2da15-42aa-4543-8cdd-842099da116f">
+                    <div class="form-group">
+                        <input type="text" id="name"  name="name">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" required name="message"></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/Dhanush1s"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/dhanush-kumar-a949972a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/DhanushKum7375?t=uVRDz3ROIh5ivsv45mS8DA&s=09"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2024 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
