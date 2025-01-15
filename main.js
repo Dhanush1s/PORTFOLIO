@@ -1,24 +1,20 @@
-// Theme Toggle
-const themeToggle = document.getElementById('theme-toggle');
-const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+// Mobile Menu Toggle
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const mobileMenu = document.querySelector('.mobile-menu');
+const navLinks = document.querySelectorAll('.mobile-menu a');
 
-function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-}
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    document.body.classList.toggle('no-scroll');
+});
 
-// Check for saved theme preference or system preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    setTheme(savedTheme);
-} else if (prefersDarkScheme.matches) {
-    setTheme('dark');
-}
-
-themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    });
 });
 
 // Smooth Scrolling
@@ -26,13 +22,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth' });
+        const headerOffset = 80;
+        const elementPosition = target.offsetTop;
+        const offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
     });
 });
 
 // Navigation Active State
 const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-items a');
+const navItems = document.querySelectorAll('.nav-items a');
 
 window.addEventListener('scroll', () => {
     let current = '';
@@ -44,48 +47,29 @@ window.addEventListener('scroll', () => {
         }
     });
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href').slice(1) === current) {
+            item.classList.add('active');
         }
     });
 });
 
-// Stats Counter Animation
-const stats = document.querySelectorAll('.stat-number');
-let animated = false;
-
-function animateStats() {
-    stats.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-target'));
-        const count = +stat.innerText;
-        const increment = target / 200;
-
-        if (count < target) {
-            stat.innerText = Math.ceil(count + increment);
-            setTimeout(() => animateStats(), 1);
-        } else {
-            stat.innerText = target;
+// Reveal Animation
+const revealElements = document.querySelectorAll('.reveal');
+const revealOnScroll = () => {
+    revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+            element.classList.add('active');
         }
     });
-}
-
-// Animate stats when in viewport
-const observerOptions = {
-    threshold: 0.5
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !animated) {
-            animated = true;
-            animateStats();
-        }
-    });
-}, observerOptions);
-
-document.querySelector('.stats').forEach(stat => observer.observe(stat));
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
 
 // Skills Progress Animation
 const progressBars = document.querySelectorAll('.progress');
@@ -102,31 +86,3 @@ const skillsObserver = new IntersectionObserver((entries) => {
 progressBars.forEach(bar => skillsObserver.observe(bar));
 
 // Contact Form
-const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    alert('Message sent successfully!');
-    contactForm.reset();
-});
-
-// Reveal Animation
-const revealElements = document.querySelectorAll('.project-card, .skill-card, .stat-item');
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, {
-    threshold: 0.1,
-    rootMargin: '0px'
-});
-
-revealElements.forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(20px)';
-    element.style.transition = 'all 0.6s ease-out';
-    revealObserver.observe(element);
-});
