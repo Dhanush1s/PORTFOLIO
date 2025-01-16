@@ -1,4 +1,11 @@
 /* Variables */
+
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
 :root {
     --primary-color: #00c7ff;
     --secondary-color: #7000ff;
@@ -8,6 +15,46 @@
     --nav-bg: rgba(10, 25, 47, 0.95);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --gradient: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+}
+/* Preloader */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+.loader-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.loader {
+    width: 120%;
+    height: 120%;
+    border: 4px solid var(--primary-color);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+.loader-text {
+    position: absolute;
+    top: 45%;
+    left: 44%;
+    transform: translate(-50%, -50%);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    animation: pulse 1.5s ease-in-out infinite;
 }
 
 /* Reset & Base Styles */
@@ -29,6 +76,7 @@ body {
     background-color: var(--bg-color);
     overflow-x: hidden;
 }
+
 
 .container {
     max-width: 1200px;
@@ -60,9 +108,9 @@ body {
     font-weight: 700;
     position: relative;
 }
-
-
-
+.logo-text {
+    color: var(--text-color);
+}
 .logo-dot {
     position: absolute;
     width: 8px;
@@ -77,7 +125,6 @@ body {
 .nav-items {
     display: flex;
     gap: 2rem;
-    align-items: center;
 }
 
 .nav-items a {
@@ -615,6 +662,19 @@ section {
 }
 
 /* Animations */
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+@keyframes rotateCircle {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 @keyframes glitch-anim {
     0% {
         clip: rect(24px, 550px, 90px, 0);
@@ -660,6 +720,23 @@ section {
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* Responsive Design */
